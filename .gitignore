@@ -46,7 +46,14 @@ captures/
 *.iml
 .idea/workspace.xml
 
+local.properties
 # Keystore files
 #*.jks
 app/keystore/
-sample/keystore/
+#sample/keystore/
+library/src/main/res/mipmap-xxhdpi/
+sample/sampledata/
+node_modules
+package-lock.json
+package.json
+

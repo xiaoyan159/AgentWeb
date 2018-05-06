@@ -1,86 +1,64 @@
-![](./img/logo.png)
 
-[![License][licensesvg]][license]
+<div style="display: flex;flex-direction: row;justify-content: center" width="100%">
+      <img src="./img/logo.png"></img>
+</div>
 
-### [README of English](./README_ENGLISH.md)
+## AgentWeb 介绍  [English](./README-ENGLISH.md)
 
-## AgentWeb 介绍
-
-AgentWeb 是一个高度封装的 Android WebView ，简单易用 ， 带有进度条 、 支持文件上传 、 下载 、 简化 Javascript 通信 、 链式调用 、 加强 Web 安全的库 。让你几行代码集成一个轻量级浏览器在你的应用 。更多使用请参照上面的 sample 。 [下载 AgentWeb ](./agentweb.apk)
-
-## 前言 
-WebView 可谓是每个应用必备的一个控件了 ，但是它不是一个完善的控件 ， 比如说自身就不支持下载和上传文件以及全屏视频等等 ， 在这些地方或多或少都会踩到坑 ，AgentWeb 就是为了帮用户减少没必要踩的坑 ， 让用户轻轻松松一句话就完成所有 Web 页面的渲染与交互 。   
-
-
-## AgentWeb 功能
-1. 支持进度条以及自定义进度条
-2. 支持文件下载以及文件下载断点续传
-3. 支持下载通知形式提示进度
-4. 简化 `Javascript` 通信 
-5. 支持 `Android 4.4 Kitkat` 以及其他版本文件上传
-6. 支持注入 `Cookies`
-7. 加强 `Web` 安全
-8. 支持全屏播放视频
-9. 兼容低版本 `Js` 安全通信
-10. 支持调起支付宝，微信支付
-11. 默认支持定位
-12. 支持传入 `WebLayout`（下拉回弹效果）
-13. 支持自定义 `WebView` 
-14. 支持 `JsBridge`
-
-
-## 为什么要使用 AgentWeb ？
-
-|     Web     |  文件下载  |  文件上传 |   Js 通信  |  断点续传  |   使用简易度 |  进度条      | 线程安全    |全屏视频|
-|:-----------:|:---------:|:---------|:---------|:---------|:----------- |:-----------|:-----------|:--------|
-| WebView     |  不支持    | 不支持		|  支持    |     不支持 |    麻烦      | 没有        | 不安全      |不支持|
-| AgentWeb	 |  支持		| 支持		|  更简洁   |   支持    |    简洁      | 有         |  安全       |支持|	
+AgentWeb 是一个基于的 Android WebView ，极度容易使用以及功能强大的库，提供了 Android WebView 一系列的问题解决方案 ，并且轻量和极度灵活，体验请下载的 
+[agentweb.apk](https://github.com/Justson/AgentWeb/raw/master/agentweb.apk)，
+或者你也可以到 Google Play 里面下载 [AgentWeb](https://play.google.com/store/apps/details?id=com.just.agentweb.sample) ，
+详细使用请参照上面的 Sample 。
+	
 
 ## 引入
-
 
 
 * Gradle 
    
    ```
-   compile 'com.just.agentweb:agentweb:2.0.1'
+    compile 'com.just.agentweb:agentweb:4.0.2' // (必选)
+    compile 'com.just.agentweb:download:4.0.2' // (可选)
+    compile 'com.just.agentweb:filechooser:4.0.2'// (可选) 
    ```
+   
 * Maven
 	
 	```
 	<dependency>
  	  <groupId>com.just.agentweb</groupId>
  	  <artifactId>agentweb</artifactId>
-	  <version>2.0.1</version>
+	  <version>4.0.2</version>
 	  <type>pom</type>
 	</dependency>
 	
 	```
 
-## 腾讯X5
-如果你更喜欢腾讯X5内核 ，请切换到这个仓库
-[AgentWebX5](https://github.com/Justson/AgentWebX5)
+## 相关
+* [AgentWebX5](https://github.com/Justson/AgentWebX5)
+* [一个炫酷的 WebView 进度条](https://github.com/Justson/CoolIndicator)
+
+	
 
 ## 使用
-#### 为什么说它简洁易用吗 ？ 下面京东效果图 ， 只需一句话 ！
+#### 基础用法
 
-```
-mAgentWeb = AgentWeb.with(this)//传入Activity or Fragment
-                .setAgentWebParent(mLinearLayout, new LinearLayout.LayoutParams(-1, -1))//传入AgentWeb 的父控件 ，如果父控件为 RelativeLayout ， 那么第二参数需要传入 RelativeLayout.LayoutParams ,第一个参数和第二个参数应该对应。
-                .useDefaultIndicator()// 使用默认进度条
-                .defaultProgressBarColor() // 使用默认进度条颜色
-                .setReceivedTitleCallback(mCallback) //设置 Web 页面的 title 回调
-                .createAgentWeb()//
+```java
+mAgentWeb = AgentWeb.with(this)
+                .setAgentWebParent((LinearLayout) view, new LinearLayout.LayoutParams(-1, -1))                
+                .useDefaultIndicator()
+                .createAgentWeb()
                 .ready()
                 .go("http://www.jd.com");
 
 ```
-里面没有一句 Setting ， 甚至连 WebChromeClient 都不用配置就有进度条 。 
-
-
 
 
 ## 效果图 
+<a href="img/img-function-list.png"><img src="img/img-function-list.png" width="30%"/></a> <a href="img/img-permission.png"><img src="img/img-permission.png" width="30%"/></a> <a href="img/img-sonic.png"><img src="img/img-sonic.png" width="30%"/></a>
+
+<a href="img/img-scheme.png"><img src="img/img-scheme.png" width="30%"/></a> <a href="img/img-download.png"><img src="img/img-download.png" width="30%"/></a> <a href="img/img-bounce.png"><img src="img/img-bounce.png" width="30%"/></a>
+
 <a href="img/jd.png"><img src="img/jd.png" width="30%"/></a> <a href="img/wechat pay.png"><img src="img/wechat pay.png" width="30%"/></a> <a href="img/alipay.png"><img src="img/alipay.png" width="30%"/></a>
 
 <a href="img/js.png"><img src="img/js.png" width="30%"/></a> <a href="img/custom setting.png"><img src="img/custom setting.png" width="30%"/></a> <a href="img/video.png"><img src="img/video.png" width="30%"/></a>
@@ -88,29 +66,23 @@ mAgentWeb = AgentWeb.with(this)//传入Activity or Fragment
 
 
 * #### 调用 Javascript 方法拼接太麻烦 ？ 请看 。
-```
-//Javascript 方法
+```javascript
 function callByAndroid(){
       console.log("callByAndroid")
   }
-//Android 端
-mAgentWeb.getJsEntraceAccess().quickCallJs("callByAndroid");
-//结果
-consoleMessage:callByAndroid  lineNumber:27
+mAgentWeb.getJsAccessEntrace().quickCallJs("callByAndroid");
 ```
 
 * #### Javascript 调 Java ?
-```
-//Android 端 ， AndroidInterface 是一个注入类 ，里面有一个无参数方法：callAndroid 
+```java
 mAgentWeb.getJsInterfaceHolder().addJavaObject("android",new AndroidInterface(mAgentWeb,this));
-//在 Js 里就能通过 
-window.android.callAndroid() //调用 Java 层的 AndroidInterface 类里 callAndroid 方法
+window.android.callAndroid();
 ```
 
 
 * #### 事件处理
-```
-@Override
+```java
+    @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
 
         if (mAgentWeb.handleKeyEvent(keyCode, event)) {
@@ -121,10 +93,10 @@ window.android.callAndroid() //调用 Java 层的 AndroidInterface 类里 callAn
 ```
 
 * #### 跟随 Activity Or Fragment 生命周期 ， 释放 CPU 更省电 。
-```
- @Override
+```java
+    @Override
     protected void onPause() {
-        mAgentWeb.getWebLifeCycle().onPause();
+        mAgentWeb.getWebLifeCycle().onPause(); 
         super.onPause();
 
     }
@@ -141,14 +113,6 @@ window.android.callAndroid() //调用 Java 层的 AndroidInterface 类里 callAn
     }    
 ```
 
-* #### <del>文件上传处理<del>
-```
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        mAgentWeb.uploadFileResult(requestCode, resultCode, data);
-        super.onActivityResult(requestCode, resultCode, data);
-    }
-```
 
 * #### 全屏视频播放
 ```
@@ -159,33 +123,29 @@ android:configChanges="orientation|screenSize"
 
 * #### 定位
 ```
-<!--AgentWeb 是默认启动定位的 ， 请在你的 AndroidManifest 文件里面加入如下权限 。-->
+<!--AgentWeb 是默认允许定位的 ，如果你需要该功能 ， 请在你的 AndroidManifest 文件里面加入如下权限 。-->
 <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
 <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
 ```
 
-* #### WebChromeClient Or WebViewClient 处理业务逻辑
-```
-// AgentWeb 保持了 WebView 的使用 ， 
-mAgentWeb = AgentWeb.with(this)//
-                .setAgentWebParent(mLinearLayout,new LinearLayout.LayoutParams(-1,-1) )//
-                .useDefaultIndicator()//
-                .defaultProgressBarColor()
+* #### WebChromeClient 与 WebViewClient 
+```java
+AgentWeb.with(this)
+                .setAgentWebParent(mLinearLayout,new LinearLayout.LayoutParams(-1,-1) )
+                .useDefaultIndicator()
                 .setReceivedTitleCallback(mCallback)
                 .setWebChromeClient(mWebChromeClient)
                 .setWebViewClient(mWebViewClient)
                 .setSecutityType(AgentWeb.SecurityType.strict)
-                .createAgentWeb()//
+                .createAgentWeb()
                 .ready()
                 .go(getUrl());
-//WebViewClient
 private WebViewClient mWebViewClient=new WebViewClient(){
         @Override
         public void onPageStarted(WebView view, String url, Bitmap favicon) {
            //do you  work
         }
     };
-//WebChromeClient
 private WebChromeClient mWebChromeClient=new WebChromeClient(){
         @Override
         public void onProgressChanged(WebView view, int newProgress) {
@@ -193,28 +153,96 @@ private WebChromeClient mWebChromeClient=new WebChromeClient(){
         }
     };                
 ```
+* #### 返回上一页
+```java
+if (!mAgentWeb.back()){
+       AgentWebFragment.this.getActivity().finish();
+}
+```
 
 * #### 获取 WebView
+```java
+	mAgentWeb.getWebCreator().getWebView();
 ```
- WebView mWebView=mAgentWeb.getWebCreator().get();
+
+* ### 文件下载监听
+```java
+protected DownloadListenerAdapter mDownloadListenerAdapter = new DownloadListenerAdapter() {
+
+
+		@Override
+		public boolean onStart(String url, String userAgent, String contentDisposition, String mimetype, long contentLength, AgentWebDownloader.Extra extra) {
+			extra.setOpenBreakPointDownload(true)
+					.setIcon(R.drawable.ic_file_download_black_24dp)
+					.setConnectTimeOut(6000)
+					.setBlockMaxTime(2000)
+					.setDownloadTimeOut(60L * 5L * 1000L)
+					.setAutoOpen(true)
+					.setForceDownload(false);
+			return false;
+		}
+
+
+		@Override
+		public void onBindService(String url, DownloadingService downloadingService) {
+			super.onBindService(url, downloadingService);
+			mDownloadingService = downloadingService;
+			LogUtils.i(TAG, "onBindService:" + url + "  DownloadingService:" + downloadingService);
+		}
+
+
+		@Override
+		public void onUnbindService(String url, DownloadingService downloadingService) {
+			super.onUnbindService(url, downloadingService);
+			mDownloadingService = null;
+			LogUtils.i(TAG, "onUnbindService:" + url);
+		}
+
+
+		@Override
+		public void onProgress(String url, long loaded, long length, long usedTime) {
+			int mProgress = (int) ((loaded) / Float.valueOf(length) * 100);
+			LogUtils.i(TAG, "onProgress:" + mProgress);
+			super.onProgress(url, loaded, length, usedTime);
+		}
+
+
+		@Override
+		public boolean onResult(String path, String url, Throwable throwable) {
+			if (null == throwable) { 
+				//do you work
+			} else {
+
+			}
+			return false; 
+		}
+	};
+```
+
+
+* #### 查看 Cookies
+```java
+String cookies=AgentWebConfig.getCookiesByUrl(targetUrl);
 ```
 
 * #### 同步 Cookie
-```
-AgentWebConfig.syncCookie("http://www.jd.com","ID=XXXX")
+```java
+AgentWebConfig.syncCookie("http://www.jd.com","ID=XXXX");
 ```
 
-* #### 查看 Cookies
+* #### MiddlewareWebChromeBase 支持多个 WebChromeClient
+```java
+//略，请查看 Sample
 ```
-String cookies=AgentWebConfig.getCookiesByUrl(targetUrl);
+* #### MiddlewareWebClientBase 支持多个 WebViewClient
+```java
+//略，请查看 Sample
 ```
+
 * #### 权限拦截
-```
+```java
 protected PermissionInterceptor mPermissionInterceptor = new PermissionInterceptor() {
 
-        //AgentWeb 在触发某些敏感的 Action 时候会回调该方法， 比如定位触发 。
-        //例如 https//:www.baidu.com 该 Url 需要定位权限， 返回false ，如果版本大于等于23 ， agentWeb 会动态申请权限 ，true 该Url对应页面请求定位失败。
-        //该方法是每次都会优先触发的 ， 开发者可以做一些敏感权限拦截 。
         @Override
         public boolean intercept(String url, String[] permissions, String action) {
             Log.i(TAG, "url:" + url + "  permission:" + permissions + " action:" + action);
@@ -223,45 +251,81 @@ protected PermissionInterceptor mPermissionInterceptor = new PermissionIntercept
     };
 ```
 
-* #### AgentWeb 所需要的权限
+* #### AgentWeb 完整用法
+```java
+        mAgentWeb = AgentWeb.with(this)
+                .setAgentWebParent((LinearLayout) view, new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT))
+                .useDefaultIndicator(-1, 3)
+                .setAgentWebWebSettings(getSettings())
+                .setWebViewClient(mWebViewClient)
+                .setWebChromeClient(mWebChromeClient)
+                .setPermissionInterceptor(mPermissionInterceptor) 
+                .setSecurityType(AgentWeb.SecurityType.STRICT_CHECK) 
+                .setAgentWebUIController(new UIController(getActivity())) 
+                .setMainFrameErrorView(R.layout.agentweb_error_page, -1)
+                .useMiddlewareWebChrome(getMiddlewareWebChrome())
+                .useMiddlewareWebClient(getMiddlewareWebClient()) 
+                .setOpenOtherPageWays(DefaultWebClient.OpenOtherPageWays.DISALLOW)
+                .interceptUnkownUrl() 
+                .createAgentWeb()
+                .ready()
+                .go(getUrl()); 
 ```
- 	<uses-permission android:name="android.permission.INTERNET"></uses-permission>
+
+* #### AgentWeb 所需要的权限(在你工程中根据需求选择加入权限)
+```
+    <uses-permission android:name="android.permission.INTERNET"></uses-permission>
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"></uses-permission>
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"></uses-permission>
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"></uses-permission>
-    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
-    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"></uses-permission>
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"></uses-permission>
+    <uses-permission android:name="android.permission.READ_PHONE_STATE"></uses-permission>
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"></uses-permission>
+    <uses-permission android:name="android.permission.CAMERA"></uses-permission>
+    <uses-permission android:name="android.permission.REQUEST_INSTALL_PACKAGES"></uses-permission>
 ```
 
 * #### AgentWeb 所依赖的库
 ```
-    compile "com.android.support:design:${SUPPORT_LIB_VERSION}"
+    compile "com.android.support:design:${SUPPORT_LIB_VERSION}" // (3.0.0开始该库可选)
     compile "com.android.support:support-v4:${SUPPORT_LIB_VERSION}"
-    SUPPORT_LIB_VERSION=25.2.0(该值会更新)
+    SUPPORT_LIB_VERSION=27.0.2(该值会更新)
 ```
 
 
 ## 混淆
 如果你的项目需要加入混淆 ， 请加入如下配置
 
-```
--keep class com.just.library.** {
+```java
+-keep class com.just.agentweb.** {
     *;
 }
--dontwarn com.just.library.**
+-dontwarn com.just.agentweb.**
 
 ```
 Java 注入类不要混淆 ， 例如 sample 里面的 AndroidInterface 类 ， 需要 Keep 。
 
-```
--keepclassmembers class com.just.library.agentweb.AndroidInterface{ *; }
+```java
+-keepclassmembers class com.just.agentweb.sample.common.AndroidInterface{ *; }
 ```
 
 ## 注意事项
 * 支付宝使用需要引入支付宝SDK ，并在项目中依赖 ， 微信支付不需要做任何操作。
-* `AgentWeb` 内部使用了 AlertDialog 需要依赖 `AppCompat` 主题 。 
+* AgentWeb 内部使用了 `AlertDialog` 需要依赖 `AppCompat` 主题 。 
 * `setAgentWebParent` 不支持  `ConstraintLayout` 。
+* `mAgentWeb.getWebLifeCycle().onPause();`会暂停应用内所有`WebView` 。
+* `minSdkVersion` 低于等于16以下自定义`WebView`请注意与 `JS` 之间通信安全。
+* AgentWeb v3.0.0以上版本更新了包名，混淆的朋友们，请更新你的混淆配置。
+* 多进程无法取消下载，[解决方案](https://github.com/Justson/AgentWeb/issues/294)。
+
+## 常见问题
+
+#### 修改 AgentWeb 默认的背景色 
+```java
+		FrameLayout frameLayout = mAgentWeb.getWebCreator().getWebParentLayout();
+		frameLayout.setBackgroundColor(Color.BLACK);
+```
 
 
 ## 文档帮助
@@ -269,21 +333,55 @@ Java 注入类不要混淆 ， 例如 sample 里面的 AndroidInterface 类 ， 
 * `Sample`(推荐，详细) 
 
 ## 更新日志
-* v_2.0.1 支持并行下载 ， 修复 #114 #109 。
-* v_2.0.0 加入动态权限 ，拍照等功能 。
-* v_1.2.6 修复Android 4.4以下布局错乱 。
-* v_1.2.5 提示信息支持配置 。
-* v_1.2.4 支持传入 IWebLayout ，支持下拉回弹，下拉刷新效果 。
-* v_1.2.3 新增下载结果回调 。 
-* v_1.2.2 修复已知 Bug 。
-* v_1.2.1 支持调起支付宝 ， 微信支付 。
-* v_1.2.0 全面支持全屏视频 。
-* v_1.1.2 完善功能 。
+
+* v_4.0.2 更新
+	* 修复断点续传时进度计算错误
+	* 修复无法通过`Extra`关闭进度通知
+	* 修复`setopenbreakPointdownload` 命名不规范
+
+* v_4.0.0 更新
+	* `AgentWeb` 拆分出 `AgentWeb-Download` 、 `AgentWeb-FileChooser` 、`AgentWeb-core` 三个库，用户可以按需选择
+	* 重新设计了 `AgentWeb-Download` 
+	* 删除了 `DownloadListener` 、`DefaultMsgConfig` 以及相关API
+	* 旧废弃的API，4.0.0 直接删除，不在提供兼容
+	* 部分类和API重命名 
+	* `Fragment`和`Activity`构建一致。[#227](https://github.com/Justson/AgentWeb/issues/227)
+	* 从AgentWeb-core删除 `BaseAgentWebFragment`和`BaseAgentWebActivity` ，于Sample形式提供参考
+* v_3.1.0 更新
+	* `WebProgress` 进度条动画更细腻
+	* 修复部分机型拍照文件大小为0情况
+	* 更新了`FileUpLoadChooserImpl`
+* v_3.0.0 更新
+	* 加入 `MiddlewareWebChromeBase` 中间件 ，支持多个 `WebChromeClient` 
+	* 加入 `MiddlewareWebClientBase`中间件 ， 支持多个 `WebViewClient` 
+	* 加入了默认的错误页，并支持自定义错误页 
+	* 加入 `AgentWebUIController` ，统一控制UI 
+	* 支持拦截未知的页面 
+	* 支持调起其他应用 
+* v_2.0.1 更新
+	* 支持并行下载 ， 修复 #114 #109 
+* v_2.0.0 更新
+	* 加入动态权限 
+	* 拍照
+* v_1.2.6 更新
+	* 修复Android 4.4以下布局错乱 
+* v_1.2.5 提示信息支持配置 
+	* 提示信息支持配置 
+* v_1.2.4 更新
+	* 支持传入 IWebLayout ，支持下拉回弹，下拉刷新效果 
+* v_1.2.3 更新
+	* 新增下载结果回调 
+* v_1.2.2 更新
+	* 修复已知 Bug 
+* v_1.2.1 更新 
+	* 支持调起支付宝 ， 微信支付 
+* v_1.2.0 更新
+	* 全面支持全屏视频 
+* v_1.1.2 更新
+	* 完善功能 
 
 
-## 下个版本预告
-* 加入默认的错误页 。
-* 支持自定义错误页 。
+
 
 ## 致谢
 * [SafeWebView](https://github.com/seven456/SafeWebView)
@@ -297,7 +395,12 @@ Java 注入类不要混淆 ， 例如 sample 里面的 AndroidInterface 类 ， 
 
 
 ## 关于我
-一个位于深圳的 Android 开发者 ， 如果你有问题 ， 请联系 Email : xiaozhongcen@gmail.com
+一个位于深圳的 Android 开发者 ， 如果你有问题 ，或者工作机会， 请联系 Email : xiaozhongcen@gmail.com
+
+## 赞赏
+如果你喜欢了 `AgentWeb` 的设计 ， 你也可以请作者喝一杯咖啡。
+
+<a href="img/alipay.jpg"><img src="img/alipay.jpg" width="30%"/></a> <a href="img/wechat_pay.jpg"><img src="img/wechat_pay.jpg" width="30%"/></a> <a href="img/alipay.jpg"><img src="img/alipay.jpg" width="30%"/></a>
 
 
 [licensesvg]: https://img.shields.io/badge/License-Apache--2.0-brightgreen.svg
@@ -307,10 +410,11 @@ Java 注入类不要混淆 ， 例如 sample 里面的 AndroidInterface 类 ， 
 [qq0group]: http://qm.qq.com/cgi-bin/qm/qr?k=KpyfInzI2nr-Lh4StG0oh68GpbcD0vMG
 
 
-### 最后如果该库对你有帮助不妨对右上角点点 Star 对我支持 ， 感谢万分 ! 当然我更喜欢你 Fork PR 成为项目贡献者 。 [AgentWeb](https://github.com/Justson/AgentWeb)  
+###  [AgentWeb](https://github.com/Justson/AgentWeb)  
 
 
-## License
+[![License][licensesvg]][license]
+## License 
 ```
 Copyright (C)  Justson(https://github.com/Justson/AgentWeb)
 
